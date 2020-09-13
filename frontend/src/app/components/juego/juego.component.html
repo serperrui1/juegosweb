@@ -1,0 +1,55 @@
+<div *ngIf="juego" class="juego">
+    <img [src]="imagen" class="imagen">
+    <h5>{{juego.name}}</h5>
+    <table class="table">
+        <tr>
+            <td *ngFor="let store of stores">
+
+                <a href={{store.url}} target=""> {{store.store.name }} </a>
+            </td>
+        </tr>
+    </table>
+    <h5>Géneros</h5>
+    <table class="table">
+        <tr>
+            <td *ngFor="let genero of generos">
+
+                <a> {{genero.name}} </a>
+            </td>
+        </tr>
+    </table>
+    <div *ngIf="developers.length > 0">
+        <h5>Developers</h5>
+        <table class="table">
+
+            <tr>
+                <td *ngFor="let developer of developers">
+
+                    <a> {{developer.name}} </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div *ngIf="publishers.length > 0">
+        <h5>Publishers</h5>
+        <table class="table">
+
+            <tr>
+                <td *ngFor="let publisher of publishers">
+
+                    <a> {{publisher.name}} </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+
+    <a *ngIf="redditurl!=''" [href]=redditurl target="blank"> reddit </a>
+    <br>
+    <div class="embed-responsive embed-responsive-16by9" style="margin: 0 auto; width: 600px;">
+        <!-- medidas originales 560 315-->
+        <iframe class="embed-responsive-item" [src]="youtube"></iframe>
+
+    </div>
+</div>
