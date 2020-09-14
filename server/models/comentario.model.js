@@ -1,16 +1,12 @@
 const { Schema, model } = require('mongoose')
 
-const criticaSchema = new Schema({
+const comentarioSchema = new Schema({
     usuarioId: {
         type: String,
         required: true
     },
-    juegoId: {
+    criticaId: {
         type: Number,
-        required: true
-    },
-    titulo: {
-        type: String,
         required: true
     },
     cuerpo: {
@@ -31,4 +27,4 @@ const criticaSchema = new Schema({
     }
 })
 
-module.exports = model('Critica', criticaSchema)
+module.exports = model('Comentario', comentarioSchema)

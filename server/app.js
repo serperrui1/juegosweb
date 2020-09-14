@@ -1,6 +1,8 @@
 const express = require('express')
 const cors = require('cors')
 const criticaRoutes = require('./routes/critica.routes')
+const comentarioRoutes = require('./routes/comentario.routes')
+const notaRoutes = require('./routes/nota.routes')
 
 const app = express()
 
@@ -13,6 +15,8 @@ app.use(cors({ origin: 'http://localhost:4200' }));
 
 //Routes
 app.use(criticaRoutes)
+app.use(comentarioRoutes)
+app.use(notaRoutes)
 
 //Starting
 function startServer() {
