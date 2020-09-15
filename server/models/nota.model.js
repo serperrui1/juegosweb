@@ -2,8 +2,8 @@ const { Schema, model } = require('mongoose')
 
 const notaSchema = new Schema({
     usuario: {
-        type: String,
-        required: true
+        type: Schema.Types.ObjectId,
+        ref: 'Usuario'
     },
     juego: {
         type: Schema.Types.ObjectId,

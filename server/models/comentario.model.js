@@ -1,13 +1,13 @@
 const { Schema, model } = require('mongoose')
 
 const comentarioSchema = new Schema({
-    usuarioId: {
-        type: String,
-        required: true
+    usuario: {
+        type: Schema.Types.ObjectId,
+        ref: 'Usuario'
     },
-    criticaId: {
-        type: Number,
-        required: true
+    critica: {
+        type: Schema.Types.ObjectId,
+        ref: 'Critica'
     },
     cuerpo: {
         type: String,

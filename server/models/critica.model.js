@@ -1,13 +1,13 @@
 const { Schema, model } = require('mongoose')
 
 const criticaSchema = new Schema({
-    usuarioId: {
-        type: String,
-        required: true
+    usuario: {
+        type: Schema.Types.ObjectId,
+        ref: 'Usuario'
     },
-    juegoId: {
-        type: Number,
-        required: true
+    juego: {
+        type: Schema.Types.ObjectId,
+        ref: 'Juego'
     },
     titulo: {
         type: String,

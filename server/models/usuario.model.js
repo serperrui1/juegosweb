@@ -17,30 +17,30 @@ const usuarioSchema = new Schema({
         type: Date,
         required: true
     },
-    seguidores: {
+    seguidores: [{
         type: Schema.Types.ObjectId,
         ref: "Usuario"
-    },
-    siguiendo: {
+    }],
+    siguiendo: [{
         type: Schema.Types.ObjectId,
         ref: "Usuario"
-    },
-    porJugar: {
+    }],
+    porJugar: [{
         type: Schema.Types.ObjectId,
         ref: "Juego"
-    },
-    jugando: {
+    }],
+    jugando: [{
         type: Schema.Types.ObjectId,
         ref: "Juego"
-    },
-    jugados: {
+    }],
+    jugados: [{
         type: Schema.Types.ObjectId,
         ref: "Juego"
-    },
-    favoritos: {
+    }],
+    favoritos: [{
         type: Schema.Types.ObjectId,
         ref: "Juego"
-    },
+    }],
 })
 
 module.exports = model('Usuario', usuarioSchema)
