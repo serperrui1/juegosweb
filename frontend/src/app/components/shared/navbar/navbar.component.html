@@ -17,14 +17,15 @@
                     <a class="dropdown-item" href="#">Something else here</a>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
+            <li class="nav-item" *ngIf="usuarioService.sesionIniciada()">
+                <a class="nav-link">Perfil</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
-        <button class="btn btn-outline-success ml-2" type="button" routerLink='/registro'>Registro</button>
+        <button class="btn btn-outline-success ml-2" type="button" *ngIf="!usuarioService.sesionIniciada()" routerLink='/login'>Iniciar sesión</button>
+        <button class="btn btn-outline-success ml-2" type="button" *ngIf="usuarioService.sesionIniciada()" (click)="logout()">Cerrar sesión</button>
     </div>
 </nav>

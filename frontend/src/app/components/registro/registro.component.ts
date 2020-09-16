@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class RegistroComponent {
 
   usuario:Usuario = {
+    _id:null,
     usuario:'',
     password:'',
     nickname:'',
@@ -31,7 +32,7 @@ export class RegistroComponent {
   registro(form:NgForm){
     if(form.valid){
       this.usuarioService.registro(form).subscribe(data => {
-        this.router.navigateByUrl('/')
+        this.router.navigateByUrl('/login')
       })
     }else{
       return ;

@@ -12,5 +12,13 @@ usuarioController.newUsuario = async function(req, res) {
     })
 }
 
+usuarioController.login = async function(req, res) {
+    const { usuario, password } = req.body
+    const encontrado = await Usuario.find({ usuario, password })
+    return res.json({
+        success: true,
+        usuario: encontrado[0]
+    })
+}
 
 module.exports = { usuarioController }

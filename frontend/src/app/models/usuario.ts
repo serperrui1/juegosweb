@@ -1,5 +1,6 @@
 import { Juego } from './juego';
 export interface Usuario{
+    _id:string,
     usuario:string,
     password:string,
     nickname:string,

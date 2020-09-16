@@ -1,14 +1,15 @@
 import { Routes, RouterModule } from '@angular/router';
-import { NgModule, Input } from '@angular/core';
 
 import { HomeComponent } from './components/home/home.component';
 import { JuegoComponent } from './components/juego/juego.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { LoginComponent } from './components/login/login.component';
 
 const APP_ROUTES: Routes = [
     { path: '', component: HomeComponent },
     { path: 'juego/:id', component: JuegoComponent },
     { path: 'registro', component: RegistroComponent },
+    { path: 'login', component: LoginComponent },
     { path: '**', pathMatch: 'full', redirectTo: '' }
     
 ];

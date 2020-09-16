@@ -1,0 +1,18 @@
+<div class="container animate__animated animate__fadeInRight">
+    <p>¿No tienes cuenta? Regístrese <a routerLink="/registro">aquí</a></p>
+    <form (ngSubmit)="login(form)" #form="ngForm" autocomplete="off">
+        <div class="form-group">
+            <label>Usuario</label>
+            <input #usuario="ngModel" type="text" class="form-control" [class.is-invalid]="usuario.touched && usuario.invalid" name="usuario" [ngModel]="usuario.usuario" required>
+            <small *ngIf="usuario.touched && usuario.invalid && form.controls['usuario'].errors.required" class="form-text text-danger">Campo requerido</small>
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input #password="ngModel" type="password" class="form-control" [class.is-invalid]="password.touched && password.invalid" name="password" [ngModel]="usuario.password" required>
+            <small *ngIf="password.touched && password.invalid && form.controls['password'].errors.required" class="form-text text-danger">Campo requerido</small>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-outline-primary btn-block" [ngClass]="{'disabled': form.invalid}">Iniciar sesión</button>
+        </div>
+    </form>
+</div>

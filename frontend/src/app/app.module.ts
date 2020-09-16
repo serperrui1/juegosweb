@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { JuegoTarjetaComponent } from './components/tarjetas/juego-tarjeta/juego-tarjeta.component';
 import { JuegoComponent } from './components/juego/juego.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { RegistroComponent } from './components/registro/registro.component';
     HomeComponent,
     JuegoTarjetaComponent,
     JuegoComponent,
-    RegistroComponent
+    RegistroComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
