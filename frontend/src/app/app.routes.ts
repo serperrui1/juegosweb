@@ -3,11 +3,12 @@ import { NgModule, Input } from '@angular/core';
 
 import { HomeComponent } from './components/home/home.component';
 import { JuegoComponent } from './components/juego/juego.component';
+import { RegistroComponent } from './components/registro/registro.component';
 
 const APP_ROUTES: Routes = [
     { path: '', component: HomeComponent },
     { path: 'juego/:id', component: JuegoComponent },
-
+    { path: 'registro', component: RegistroComponent },
     { path: '**', pathMatch: 'full', redirectTo: '' }
     
 ];
