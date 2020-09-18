@@ -12,12 +12,24 @@ export class UsuarioService {
 
   constructor(private http:HttpClient) { }
 
-  registro(form:NgForm){
-    return this.http.post(`${this.back_url}/registro`, form.value)
+  registro(usuario){
+    return this.http.post(`${this.back_url}/registro`, usuario)
   }
 
-  login(form:NgForm){
-    return this.http.post(`${this.back_url}/login`,form.value).pipe(map(data => data['usuario']))
+  checkUsuario(usuario:string){
+    return this.http.get(`${this.back_url}/registro/checkUsuario/${usuario}`).pipe(map(data => data['num']))
+  }
+
+  checkNickname(nickname:string){
+    return this.http.get(`${this.back_url}/registro/checkNickname/${nickname}`).pipe(map(data => data['num']))
+  }
+
+  checkEmail(email:string){
+    return this.http.get(`${this.back_url}/registro/checkEmail/${email}`).pipe(map(data => data['num']))
+  }
+
+  login(data){
+    return this.http.post(`${this.back_url}/login`,data)
   }
 
   logout(){

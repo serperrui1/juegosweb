@@ -1,36 +1,32 @@
 <div class="container animate__animated animate__fadeInRight">
-    <form (ngSubmit)="registro(form)" #form="ngForm" autocomplete="off">
+    <form (ngSubmit)="registro()" [formGroup]="form" autocomplete="off">
         <div class="form-group">
             <label>Usuario</label>
-            <input #usuario="ngModel" type="text" class="form-control" [class.is-invalid]="usuario.invalid && usuario.touched" [class.is-valid]="usuario.valid" name="usuario" [ngModel]="usuario.usuario" minlength="4" required>
-            <small *ngIf="usuario.touched && usuario.invalid && form.controls['usuario'].errors.required" class="form-text text-danger">Campo requerido</small>
-            <small *ngIf="usuario.touched && usuario.invalid && form.controls['usuario'].errors.minlength" class="form-text text-danger">Debe contener al menos 4 caracteres</small>
+            <input type="text" class="form-control" formControlName="usuario" [class.is-invalid]="usuarioNoValido">
+            <small *ngIf="usuarioNoValido" class="text-danger">Campo requerido. Mínimo 6 caracteres</small>
         </div>
         <div class="form-group">
             <label>Password</label>
-            <input #password="ngModel" type="password" class="form-control" [class.is-invalid]="password.invalid && password.touched" [class.is-valid]="password.valid" name="password" [ngModel]="usuario.password" minlength="6" required>
-            <small *ngIf="password.touched && password.invalid && form.controls['password'].errors.required" class="form-text text-danger">Campo requerido</small>
-            <small *ngIf="password.touched && password.invalid && form.controls['password'].errors.minlength" class="form-text text-danger">Debe contener al menos 6 caracteres</small>
+            <input type="password" class="form-control" formControlName="password" [class.is-invalid]="passwordNoValido">
+            <small *ngIf="passwordNoValido" class="text-danger">Campo requerido. Mínimo 6 caracteres</small>
         </div>
         <div class="form-group">
             <label>Nickname</label>
-            <input #nickname="ngModel" type="text" class="form-control" [class.is-invalid]="nickname.invalid && nickname.touched" [class.is-valid]="nickname.valid" name="nickname" [ngModel]="usuario.nickname" minlength="4" required>
-            <small *ngIf="nickname.touched && nickname.invalid && form.controls['nickname'].errors.required" class="form-text text-danger">Campo requerido</small>
-            <small *ngIf="nickname.touched && nickname.invalid && form.controls['nickname'].errors.minlength" class="form-text text-danger">Debe contener al menos 4 caracteres</small>
+            <input type="text" class="form-control" formControlName="nickname" [class.is-invalid]="nicknameNoValido">
+            <small *ngIf="nicknameNoValido" class="text-danger">Campo requerido. Mínimo 4 caracteres</small>
         </div>
         <div class="form-group">
             <label>Email</label>
-            <input #email="ngModel" type="text" class="form-control" [class.is-invalid]="email.invalid && email.touched" [class.is-valid]="email.valid" name="email" [ngModel]="usuario.email" email required>
-            <small *ngIf="email.touched && email.invalid && form.controls['email'].errors.required" class="form-text text-danger">Campo requerido</small>
-            <small *ngIf="email.touched && email.invalid && form.controls['email'].errors.email" class="form-text text-danger">El email no es válido</small>
+            <input type="text" class="form-control" formControlName="email" [class.is-invalid]="emailNoValido">
+            <small *ngIf="emailNoValido" class="text-danger">Campo requerido. Debe introducir un email válido.</small>
         </div>
         <div class="form-group">
             <label>Fecha de nacimiento</label>
-            <input #fechaNacimiento="ngModel" type="date" class="form-control" [class.is-invalid]="fechaNacimiento.invalid && fechaNacimiento.touched" [class.is-valid]="fechaNacimiento.valid" name="fechaNacimiento" [ngModel]="usuario.fechaNacimiento" required>
-            <small *ngIf="fechaNacimiento.touched && fechaNacimiento.invalid && form.controls['fechaNacimiento'].errors.required" class="form-text text-danger">Campo requerido</small>
+            <input type="date" class="form-control" formControlName="fechaNacimiento" [class.is-invalid]="fechaNacimientoNoValido">
+            <small *ngIf="fechaNacimientoNoValido" class="text-danger">Campo requerido. Debe ser anterior a hoy</small>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-outline-primary btn-block" [ngClass]="{'disabled': form.invalid}">Registrarse</button>
+            <button type="submit" class="btn btn-outline-primary btn-block">Registrarse</button>
         </div>
     </form>
 </div>

@@ -1,4 +1,5 @@
 const { Schema, model, Collection } = require('mongoose')
+const bcryptjs = require('bcryptjs')
 
 const usuarioSchema = new Schema({
     usuario: {
@@ -46,5 +47,14 @@ const usuarioSchema = new Schema({
         ref: "Juego"
     }],
 })
+
+usuarioSchema.methods.cifrar = async(password) => {
+    const salt = await bcryptjs.genSalt()
+    return await bcryptjs.hash(password, salt)
+}
+
+usuarioSchema.methods.comparar = async(password1, password2) => {
+    return await bcryptjs.compare(password1, password2)
+}
 
 module.exports = model('Usuario', usuarioSchema)
