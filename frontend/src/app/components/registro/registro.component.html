@@ -1,32 +1,40 @@
-<div class="container animate__animated animate__fadeInRight">
+<div class="container animate__animated animate__fadeInRight animate__fast">
     <form (ngSubmit)="registro()" [formGroup]="form" autocomplete="off">
         <div class="form-group">
             <label>Usuario</label>
-            <input type="text" class="form-control" formControlName="usuario" [class.is-invalid]="usuarioNoValido">
-            <small *ngIf="usuarioNoValido" class="text-danger">Campo requerido. Mínimo 6 caracteres</small>
+            <input type="text" class="form-control" formControlName="usuario" [class.is-invalid]="usuarioNoValido" [class.is-valid]="!usuarioNoValido && form.get('usuario').touched">
+            <small *ngIf="usuarioRequerido" class="text-danger">Campo requerido</small>
+            <small *ngIf="usuarioMinLength" class="text-danger">Mínimo seis caracteres</small>
+            <small *ngIf="usuarioExiste" class="text-danger">El usuario ya existe</small>
         </div>
         <div class="form-group">
             <label>Password</label>
-            <input type="password" class="form-control" formControlName="password" [class.is-invalid]="passwordNoValido">
-            <small *ngIf="passwordNoValido" class="text-danger">Campo requerido. Mínimo 6 caracteres</small>
+            <input type="password" class="form-control" formControlName="password" [class.is-invalid]="passwordNoValido" [class.is-valid]="!passwordNoValido && form.get('password').touched">
+            <small *ngIf="passwordRequerido" class="text-danger">Campo requerido</small>
+            <small *ngIf="passwordMinLength" class="text-danger">Mínimo seis caracteres</small>
         </div>
         <div class="form-group">
             <label>Nickname</label>
-            <input type="text" class="form-control" formControlName="nickname" [class.is-invalid]="nicknameNoValido">
-            <small *ngIf="nicknameNoValido" class="text-danger">Campo requerido. Mínimo 4 caracteres</small>
+            <input type="text" class="form-control" formControlName="nickname" [class.is-invalid]="nicknameNoValido" [class.is-valid]="!nicknameNoValido && form.get('nickname').touched">
+            <small *ngIf="nicknameRequerido" class="text-danger">Campo requerido</small>
+            <small *ngIf="nicknameMinLength" class="text-danger">Mínimo cuatro caracteres</small>
+            <small *ngIf="nicknameExiste" class="text-danger">El nickname ya existe</small>
         </div>
         <div class="form-group">
             <label>Email</label>
-            <input type="text" class="form-control" formControlName="email" [class.is-invalid]="emailNoValido">
-            <small *ngIf="emailNoValido" class="text-danger">Campo requerido. Debe introducir un email válido.</small>
+            <input type="text" class="form-control" formControlName="email" [class.is-invalid]="emailNoValido" [class.is-valid]="!emailNoValido && form.get('email').touched">
+            <small *ngIf="emailRequerido" class="text-danger">Campo requerido</small>
+            <small *ngIf="emailEmail" class="text-danger">Debe introducir un email válido</small>
+            <small *ngIf="emailExiste" class="text-danger">El email ya existe</small>
         </div>
         <div class="form-group">
             <label>Fecha de nacimiento</label>
-            <input type="date" class="form-control" formControlName="fechaNacimiento" [class.is-invalid]="fechaNacimientoNoValido">
-            <small *ngIf="fechaNacimientoNoValido" class="text-danger">Campo requerido. Debe ser anterior a hoy</small>
+            <input type="date" class="form-control" formControlName="fechaNacimiento" [class.is-invalid]="fechaNacimientoNoValido" [class.is-valid]="!fechaNacimientoNoValido && form.get('fechaNacimiento').touched">
+            <small *ngIf="fechaNacimientoRequerido" class="text-danger">Campo requerido</small>
+            <small *ngIf="fechaNacimientoFechaAnteriorAHoy" class="text-danger">Debe ser anterior a hoy</small>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-outline-primary btn-block">Registrarse</button>
+            <button type="submit" class="btn btn-outline-success btn-block" [ngClass]="{'disabled': form.invalid}">Registrarse</button>
         </div>
     </form>
 </div>

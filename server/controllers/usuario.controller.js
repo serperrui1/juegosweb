@@ -5,12 +5,22 @@ const usuarioController = {}
 
 usuarioController.newUsuario = async(req, res) => {
     const usuario = new Usuario(req.body)
-    usuario.password = await usuario.cifrar(req.body.password)
-    await usuario.save()
-    return res.json({
-        success: true,
-        usuario
-    })
+    const existeUsuario = await Usuario.find({ usuario: usuario.usuario })
+    const existeNickname = await Usuario.find({ nickname: usuario.nickname })
+    const existeEmail = await Usuario.find({ email: usuario.email })
+    if (existeUsuario.length > 0 || existeNickname.length > 0 || existeEmail.length > 0) {
+        return res.json({
+            success: false,
+            usuario: {}
+        })
+    } else {
+        usuario.password = await usuario.cifrar(req.body.password)
+        await usuario.save()
+        return res.json({
+            success: true,
+            usuario
+        })
+    }
 }
 
 usuarioController.login = async(req, res) => {

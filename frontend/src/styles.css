@@ -1,1 +1,34 @@
-@import '~animate.css/animate.min'
+@import '~animate.css/animate.min';
+body {
+    background-color: black;
+}
+
+body {
+    color: #28A745;
+}
+
+.form-control,
+.form-control:focus {
+    background-color: #343A40;
+    color: #28A745;
+    border-color: #28A745;
+    text-decoration: none;
+}
+
+.card {
+    border-color: #28A745;
+    border-width: 2px;
+}
+
+.dropdown-menu {
+    background-color: #343A40;
+}
+
+.dropdown-item {
+    color: #28A745;
+}
+
+.dropdown-item:hover {
+    background-color: #505050;
+    color: #28A745;
+}

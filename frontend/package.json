@@ -15,7 +15,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~10.1.0",
+    "@angular/animations": "^10.1.2",
     "@angular/common": "~10.1.0",
     "@angular/compiler": "~10.1.0",
     "@angular/core": "~10.1.0",
@@ -27,6 +27,7 @@
     "@nguniversal/express-engine": "^10.1.0",
     "animate.css": "^4.1.1",
     "express": "^4.15.2",
+    "ngx-toastr": "^13.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

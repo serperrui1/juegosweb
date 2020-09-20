@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { UsuarioService } from '../../services/usuario.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-registro',
@@ -13,7 +14,7 @@ export class RegistroComponent {
 
   form:FormGroup
   
-  constructor(private usuarioService:UsuarioService, private router:Router, private builder:FormBuilder) { 
+  constructor(private usuarioService:UsuarioService, private router:Router, private builder:FormBuilder, private toastr:ToastrService) { 
     this.iniciarFormulario()
   }
 
@@ -29,19 +30,62 @@ export class RegistroComponent {
 
   //Validaciones síncronas
   get usuarioNoValido(){
-    return this.form.get('usuario').invalid && this.form.get('usuario').touched
+    return this.usuarioRequerido || this.usuarioExiste || this.usuarioMinLength
   }
+  get usuarioRequerido(){
+    return this.form.get('usuario').errors?.required && this.form.get('usuario').touched
+  }
+  get usuarioMinLength(){
+    return this.form.get('usuario').errors?.minlength && this.form.get('usuario').touched
+  }
+  get usuarioExiste(){
+    return this.form.get('usuario').errors?.existe
+  }
+
   get passwordNoValido(){
-    return this.form.get('password').invalid && this.form.get('password').touched
+    return this.passwordRequerido || this.passwordMinLength
   }
+  get passwordRequerido(){
+    return this.form.get('password').errors?.required && this.form.get('password').touched
+  }
+  get passwordMinLength(){
+    return this.form.get('password').errors?.minlength && this.form.get('password').touched
+  }
+
   get nicknameNoValido(){
-    return this.form.get('nickname').invalid && this.form.get('nickname').touched
+    return this.nicknameRequerido || this.nicknameExiste || this.nicknameMinLength
   }
+  get nicknameRequerido(){
+    return this.form.get('nickname').errors?.required && this.form.get('nickname').touched
+  }
+  get nicknameMinLength(){
+    return this.form.get('nickname').errors?.minlength && this.form.get('nickname').touched
+  }
+  get nicknameExiste(){
+    return this.form.get('nickname').errors?.existe
+  }
+
   get emailNoValido(){
-    return this.form.get('email').invalid && this.form.get('email').touched
+    return this.emailRequerido || this.emailExiste || this.emailEmail
   }
+  get emailRequerido(){
+    return this.form.get('email').errors?.required && this.form.get('email').touched
+  }
+  get emailEmail(){
+    return this.form.get('email').errors?.email && this.form.get('email').touched
+  }
+  get emailExiste(){
+    return this.form.get('email').errors?.existe
+  }
+
   get fechaNacimientoNoValido(){
-    return this.form.get('fechaNacimiento').invalid && this.form.get('fechaNacimiento').touched
+    return this.fechaNacimientoRequerido || this.fechaNacimientoFechaAnteriorAHoy
+  }
+  get fechaNacimientoRequerido(){
+    return this.form.get('fechaNacimiento').errors?.required && this.form.get('fechaNacimiento').touched
+  }
+  get fechaNacimientoFechaAnteriorAHoy(){
+    return this.form.get('fechaNacimiento').errors?.fechaAnteriorAHoy && this.form.get('fechaNacimiento').touched
   }
 
   //Validaciones asíncronas
@@ -106,7 +150,13 @@ export class RegistroComponent {
       this.form.markAllAsTouched()
     }else{
         this.usuarioService.registro(this.form.value).subscribe(data => {
-        this.router.navigateByUrl('/login')
+        const exito = data['success']
+        if(exito){
+          this.router.navigateByUrl('/login')
+          this.toastr.success('Registrado con éxito')
+        }else{
+          return ;
+        }
       })
     }
   }
