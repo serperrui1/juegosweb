@@ -1,0 +1,14 @@
+<div class="row animated fadeIn fast" *ngIf="juegos.length == 0 ">
+    <div class="col-md-12">
+        <div class="alert alert-info" role="alert">
+            No existen resultados con el ingrediente: {{ nombre }}
+        </div>
+    </div>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 ">
+
+    <app-juego-tarjeta (juegoSeleccionado)="verJuego($event)" [juego]="juego" [id]="juego.id" *ngFor="let juego of juegos"></app-juego-tarjeta>
+
+
+</div>

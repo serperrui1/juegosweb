@@ -1,27 +1,27 @@
 @import '~animate.css/animate.min';
 body {
-    background-color: black;
+    background-color: #222831;
 }
 
 body {
-    color: #28A745;
+    color: white;
 }
 
 .form-control,
 .form-control:focus {
-    background-color: #343A40;
+    background-color: #393e46;
     color: #28A745;
     border-color: #28A745;
     text-decoration: none;
 }
 
 .card {
-    border-color: #28A745;
+    border-color: #393e46;
     border-width: 2px;
 }
 
 .dropdown-menu {
-    background-color: #343A40;
+    background-color: #393e46;
 }
 
 .dropdown-item {
@@ -29,6 +29,20 @@ body {
 }
 
 .dropdown-item:hover {
-    background-color: #505050;
+    background-color: #393e46;
     color: #28A745;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.table {
+    color: white;
 }

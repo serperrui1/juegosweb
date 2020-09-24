@@ -13,6 +13,12 @@ import { JuegoTarjetaComponent } from './components/tarjetas/juego-tarjeta/juego
 import { JuegoComponent } from './components/juego/juego.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { LoginComponent } from './components/login/login.component';
+//angular material
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { JuegosComponent } from './components/juegos/juegos.component';
 
 
 @NgModule({
@@ -23,7 +29,8 @@ import { LoginComponent } from './components/login/login.component';
     JuegoTarjetaComponent,
     JuegoComponent,
     RegistroComponent,
-    LoginComponent
+    LoginComponent,
+    JuegosComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -32,7 +39,13 @@ import { LoginComponent } from './components/login/login.component';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    //angular material ----
+    MatFormFieldModule,
+    MatAutocompleteModule,
+    MatSelectModule,
+    MatInputModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
